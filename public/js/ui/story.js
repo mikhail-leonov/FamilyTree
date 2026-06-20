@@ -1,4 +1,4 @@
-/* ui/story.js — narrative, chronological timeline, printable life story  */
+/* ui/story.js — narrative, chronological timeline, printable life story */
 window.FT = window.FT || {};
 FT.UI = FT.UI || {};
 

@@ -1,4 +1,4 @@
-/* ============================================================================
+/* ============================================================================ 
  * services/search-service.js 
  * Global search using IndexedDB indexes for prefix matching across name,
  * maiden name, nickname, occupation, and birthplace. Free-text fields

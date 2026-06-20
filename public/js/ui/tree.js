@@ -1,4 +1,4 @@
-/* ============================================================================ 
+/* ============================================================================
  * ui/tree.js — interactive CANVAS family-tree workspace.
  *
  * This is the page controller that wires the data layer (FT.Tree.focusGraph)

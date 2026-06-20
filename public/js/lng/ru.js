@@ -1,4 +1,4 @@
-/* js/lng/ru.js — Russian language pack (Русский). Registers itself with the i18n engine.  */
+/* js/lng/ru.js — Russian language pack (Русский). Registers itself with the i18n engine. */
 (function (FT) {
   "use strict";
   FT.I18n.register("ru", {

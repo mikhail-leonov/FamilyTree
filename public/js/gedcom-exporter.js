@@ -1,4 +1,4 @@
-/* ============================================================================ 
+/* ============================================================================
  * gedcom-exporter.js
  * Exports the active tree to GEDCOM 5.5.1 and to native JSON.
  * Reconstructs FAM records from parent-child edges + marriages.

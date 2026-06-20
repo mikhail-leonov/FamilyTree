@@ -1,4 +1,4 @@
-/* ui/io.js — Import / Export: GEDCOM, JSON, new tree, clear data  */
+/* ui/io.js — Import / Export: GEDCOM, JSON, new tree, clear data */
 window.FT = window.FT || {};
 FT.UI = FT.UI || {};
 

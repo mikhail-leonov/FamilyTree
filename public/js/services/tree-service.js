@@ -1,4 +1,4 @@
-/* ============================================================================
+/* ============================================================================ 
  * services/tree-service.js 
  * Focus-mode graph assembly. Given a focus person, walks the parent-child
  * graph upward (ancestors) and downward (descendants) to a configurable depth,

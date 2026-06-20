@@ -1,4 +1,4 @@
-/* ============================================================================ 
+/* ============================================================================
  * gedcom-parser.js
  * Parses GEDCOM 5.5 / 5.5.1 / 7.0 into the internal IndexedDB schema.
  * Unsupported tags are ignored gracefully. Relationships from FAM records are

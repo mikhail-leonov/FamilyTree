@@ -1,4 +1,4 @@
-/* ============================================================================ 
+/* ============================================================================
  * core.js — shared application state and DOM/UI helpers.
  * Loads FIRST so every other module can rely on FT.State and FT.H being
  * defined at the moment their script is parsed.

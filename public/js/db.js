@@ -1,4 +1,4 @@
-/* ============================================================================ 
+/* ============================================================================
  * db.js — IndexedDB open/upgrade + low-level helpers.
  *
  * This module was previously inconsistent with the rest of the application

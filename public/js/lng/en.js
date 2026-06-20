@@ -1,4 +1,4 @@
-/* js/lng/en.js — English language pack. Registers itself with the i18n engine.  */
+/* js/lng/en.js — English language pack. Registers itself with the i18n engine. */
 (function (FT) {
   "use strict";
   FT.I18n.register("en", {
