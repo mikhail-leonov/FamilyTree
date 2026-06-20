@@ -1,4 +1,4 @@
-/* ============================================================================
+/* ============================================================================ 
  * i18n.js — lightweight localization engine.
  * Loads FIRST (before the language packs in js/lng/ and before any UI), so
  * FT.I18n.register() is available when each language file runs, and FT.t() is

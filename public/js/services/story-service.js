@@ -1,5 +1,5 @@
 /* ============================================================================
- * services/story-service.js
+ * services/story-service.js 
  * Generates readable narratives from stored data: a prose biography, a
  * chronological timeline, and a printable summary.
  * ========================================================================== */

@@ -1,5 +1,5 @@
 /* ============================================================================
- * services/data-service.js
+ * services/data-service.js 
  * CRUD + integrity for persons, relationships, marriages, events, media.
  * Enforces: no duplicate parent-child edges, no circular ancestry,
  * cascading cleanup of orphaned references, transactional batch ops.

@@ -1,4 +1,4 @@
-/* ui/dashboard.js — statistics, recent edits, quick links.
+/* ui/dashboard.js — statistics, recent edits, quick links. 
  * v2: counts come from index.count() and one bounded cursor pass instead of
  * loading every person/marriage/event array into memory (performance spec). */
 window.FT = window.FT || {};

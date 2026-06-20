@@ -1,5 +1,5 @@
 /* ============================================================================
- * services/search-service.js
+ * services/search-service.js 
  * Global search using IndexedDB indexes for prefix matching across name,
  * maiden name, nickname, occupation, and birthplace. Free-text fields
  * (notes/biography) fall back to a bounded cursor scan.

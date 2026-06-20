@@ -1,4 +1,4 @@
-/* ============================================================================
+/* ============================================================================ 
  * app.js — application shell: global state, hash router, shared UI helpers,
  * and bootstrap (open DB, seed demo on first run, wire navigation).
  * Loads LAST.

@@ -1,4 +1,4 @@
-/* ui/people.js — paginated, sortable, searchable people list.
+/* ui/people.js — paginated, sortable, searchable people list. 
  * v2: pages are fetched with cursor.advance() over composite
  * [tree_id, sortField] indexes — previously every page re-scanned the whole
  * tree index from record zero (O(n) per page). */

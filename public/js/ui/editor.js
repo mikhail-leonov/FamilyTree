@@ -1,4 +1,4 @@
-/* ui/editor.js — person editor: identity, dates, relationships, marriages,
+/* ui/editor.js — person editor: identity, dates, relationships, marriages, 
  * events, media metadata.
  * v2 changes:
  *   - Date fields are TEXT inputs accepting partial dates (YYYY, YYYY-MM,
