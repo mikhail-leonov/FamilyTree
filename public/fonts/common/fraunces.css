@@ -1,0 +1,144 @@
+/* fraunces-100 - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-100.woff2') format('woff2'); 
+}
+/* fraunces-100italic - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 100;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-100italic.woff2') format('woff2'); 
+}
+/* fraunces-200 - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 200;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-200.woff2') format('woff2'); 
+}
+/* fraunces-200italic - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 200;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-200italic.woff2') format('woff2'); 
+}
+/* fraunces-300 - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 300;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-300.woff2') format('woff2'); 
+}
+/* fraunces-300italic - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 300;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-300italic.woff2') format('woff2'); 
+}
+/* fraunces-regular - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 400;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-regular.woff2') format('woff2'); 
+}
+/* fraunces-italic - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 400;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-italic.woff2') format('woff2'); 
+}
+/* fraunces-500 - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 500;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-500.woff2') format('woff2'); 
+}
+/* fraunces-500italic - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 500;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-500italic.woff2') format('woff2'); 
+}
+/* fraunces-600 - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 600;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-600.woff2') format('woff2'); 
+}
+/* fraunces-600italic - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 600;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-600italic.woff2') format('woff2'); 
+}
+/* fraunces-700 - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 700;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-700.woff2') format('woff2'); 
+}
+/* fraunces-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 700;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-700italic.woff2') format('woff2'); 
+}
+/* fraunces-800 - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 800;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-800.woff2') format('woff2'); 
+}
+/* fraunces-800italic - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 800;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-800italic.woff2') format('woff2'); 
+}
+/* fraunces-900 - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 900;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-900.woff2') format('woff2'); 
+}
+/* fraunces-900italic - latin_latin-ext */
+@font-face {
+  font-display: swap; 
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 900;
+  src: url('Fraunces/fraunces-v38-latin_latin-ext-900italic.woff2') format('woff2'); 
+}
