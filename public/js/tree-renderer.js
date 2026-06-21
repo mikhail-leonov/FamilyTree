@@ -626,22 +626,8 @@ window.FT = window.FT || {};
       else                { ctx.moveTo(t.cx, t.edgeY); ctx.lineTo(t.cx, t.y); }
       ctx.stroke();
       roundRect(ctx, t.x, t.y, t.w, t.h, 3);
-      // Parent / expand tab (▲): a plain, slightly darker filled nub with NO
-      // chevron. Child tab (▼) keeps the light badge fill + down chevron.
-      if (t.dir === "up") {
-        ctx.fillStyle = C.navFill; ctx.fill();
-        ctx.lineWidth = 1.3; ctx.strokeStyle = C.spouse; ctx.stroke();
-        return;                              // no glyph on the expand tab
-      }
-      ctx.fillStyle = C.badgeFill; ctx.fill();
+      ctx.fillStyle = C.navFill; ctx.fill();
       ctx.lineWidth = 1.3; ctx.strokeStyle = C.spouse; ctx.stroke();
-      const mx = t.cx, my = t.y + t.h / 2;
-      ctx.strokeStyle = C.ink; ctx.lineWidth = 1.5;
-      ctx.lineCap = "round"; ctx.lineJoin = "round";
-      ctx.beginPath();
-      ctx.moveTo(mx - 4, my - 2); ctx.lineTo(mx, my + 2); ctx.lineTo(mx + 4, my - 2);
-      ctx.stroke();
-      ctx.lineCap = "butt";
     }
     function draw() {
       const ctx = state.ctx;
