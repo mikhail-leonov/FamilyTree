@@ -1,0 +1,8 @@
+public/css/bootstrap/*
+public/js/bootstrap/*
+public/fonts/common/*
+public/icons/common/*
+*.cmd
+*.ged
+
+
