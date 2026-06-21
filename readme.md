@@ -26,18 +26,6 @@ The interface ships in English and Russian, with a warm "Heirloom" parchment the
 
 The app is fully static, so it just needs to be served over HTTP (opening `index.html` directly via `file://` will not work because browsers restrict IndexedDB and module loading on the file protocol).
 
-From the project root:
-
-```bash
-# Python 3
-python -m http.server 8000
-
-# or Node
-npx serve .
-```
-
-Then open `http://localhost:8000/` in a modern browser.
-
 On first run the database is created empty. Head to **Tree** to name your family and add the first person, or go to **Import / Export** to load a GEDCOM or JSON file.
 
 > All data lives in your browser's IndexedDB under the database name `FamilyTreeDB`. Clearing site data (or using the **Danger zone → Erase all data** button) permanently removes it, so export a JSON backup before doing either.
