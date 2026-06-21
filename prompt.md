@@ -78,7 +78,7 @@ Factories produce normalized records. IDs use `crypto.randomUUID()` when availab
 - **tree**: `id, name, description, created, updated`.
 
 **Dates are partial-friendly:** accept `YYYY`, `YYYY-MM`, or `YYYY-MM-DD` everywhere. Provide:
-- `isValidPartialDate(d)` → regex `^\d{4}(-\d{2}(-\d{2})?)?$`.
+- `isValidPartialDate(d)` → regex `^\d{4}(-\d{2}(-\d{2})?)?$`. 
 - `dateLow(d)` / `dateHigh(d)` → expand a partial date to the earliest/latest concrete day (used for range comparisons).
 
 **Display helpers:**
