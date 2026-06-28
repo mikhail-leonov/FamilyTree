@@ -1,0 +1,106 @@
+/* js/lng/eo.js — Esperanto language pack. Registers itself with the i18n engine. */
+(function (FT) {
+  "use strict";
+  FT.I18n.register("eo", {
+    name: "Esperanto",
+    nativeName: "Esperanto",
+    dir: "ltr",
+    strings: {
+      // shell
+      "brand.title": "Genealogia arbo",
+      "nav.dashboard": "Panelo",
+      "nav.people": "Personoj",
+      "nav.tree": "Arbo",
+      "nav.io": "Importi / Eksporti",
+      "search.placeholder": "Serĉi personojn\u2026",
+      "lang.label": "Lingvo",
+
+      // common
+      "common.addPerson": "+ Aldoni personon",
+      "common.viewTree": "Vidi la arbon",
+      "common.tree": "Arbo",
+      "common.story": "Rakonto",
+      "common.edit": "Redakti",
+      "common.print": "Presi",
+      "common.importData": "Importi datumojn",
+      "common.openViewer": "Malfermi rigardilon",
+      "common.manageData": "Administri datumojn",
+      "common.prev": "\u2190 Antaŭa",
+      "common.next": "Sekva \u2192",
+      "common.loading": "Ŝargado\u2026",
+
+      // dashboard
+      "dash.overview": "Superrigardo",
+      "dash.title": "Panelo",
+      "stat.people": "Personoj",
+      "stat.living": "Vivantaj",
+      "stat.deceased": "{n} mortintaj",
+      "stat.marriages": "Geedziĝoj",
+      "stat.events": "Eventoj",
+      "stat.surnames": "Familinomoj",
+      "stat.earliestBirth": "Plej frua naskiĝo",
+      "dash.recentlyEdited": "Lastatempe redaktitaj",
+      "dash.noPeople": "Ankoraŭ neniu persono. Aldonu unu por komenci.",
+      "empty.title": "Via arbo estas malplena",
+      "empty.body": "Iru al la paĝo Arbo por nomi vian genealogian arbon kaj aldoni ĝian unuan personon \u2014 aŭ importu GEDCOM / JSON dosieron.",
+      "empty.start": "Komenci vian arbon",
+      "quick.exploreTitle": "Esplori la arbon",
+      "quick.exploreBody": "Trairu prauloj kaj posteuloj en la interaga rigardilo.",
+      "quick.ioTitle": "Importi / Eksporti",
+      "quick.ioBody": "Ŝargu GEDCOM dosieron aŭ savkopiu viajn datumojn kiel JSON.",
+
+      // people
+      "people.records": "Registroj",
+      "people.title": "Personoj",
+      "people.searchPlaceholder": "Nomo, profesio, naskiĝloko\u2026",
+      "people.includeNotes": "inkluzivi notojn kaj biografion",
+      "sort.lastName": "Familinomo",
+      "sort.firstName": "Persona nomo",
+      "sort.birthDate": "Naskiĝdato",
+      "table.name": "Nomo",
+      "table.lifespan": "Vivodaŭro",
+      "table.birthplace": "Naskiĝloko",
+      "table.occupation": "Profesio",
+      "people.noMatches": "Neniuj rezultoj",
+      "people.noPeople": "Ankoraŭ neniu persono",
+      "people.noMatchesBody": "Provu pli mallongan prefikson, aŭ inkluzivu notojn kaj biografion.",
+      "people.noPeopleBody": "Aldonu personon aŭ importu GEDCOM dosieron por komenci.",
+      "people.living": "vivanta",
+      "people.pageInfo": "Paĝo {page} el {pages} \u00b7 {total} {unit}",
+      "people.unitMatches": "rezultoj",
+      "people.unitPeople": "personoj",
+
+      // story
+      "story.eyebrow": "Vivrakonto",
+      "tab.narrative": "Rakonto",
+      "tab.timeline": "Templinio",
+      "story.noEvents": "Neniuj datitaj eventoj.",
+      "story.notEnough": "Ankoraŭ ne sufiĉe da informoj por komponi rakonton.",
+      "rel.parents": "Gepatroj",
+      "rel.children": "Infanoj",
+
+      // import / export
+      "io.eyebrow": "Datumoj",
+      "io.title": "Importi kaj eksporti",
+      "io.secImport": "Importi",
+      "io.secImportDesc": "Aldonu registrojn al via genealogia arbo el alia programaro aŭ el savkopio.",
+      "io.secExport": "Eksporti",
+      "io.secExportDesc": "Portu vian genealogian arbon aliloken, aŭ konservu sekuran lokan savkopion.",
+      "io.gedImportTitle": "Importi GEDCOM",
+      "io.gedImportDesc": "Subtenas 5.5, 5.5.1 kaj 7.0. Nekonataj etikedoj estas preterlasitaj. Importitaj personoj estas kunfanditaj en vian genealogian arbon; duobligoj estas forigitaj.",
+      "io.gedChoose": "Elekti .ged dosieron",
+      "io.gedExportTitle": "Eksporti GEDCOM",
+      "io.gedExportDesc": "Eksportu vian genealogian arbon kiel GEDCOM 5.5.1 por uzo en alia genealogia programaro.",
+      "io.gedExportBtn": "Elŝuti GEDCOM",
+      "io.jsonExportTitle": "Eksporti JSON",
+      "io.jsonExportDesc": "Sendifekta indiĝena savkopio inkluzive de personoj, rilatoj, geedziĝoj, eventoj kaj aŭdvidaĵoj.",
+      "io.jsonExportBtn": "Elŝuti JSON savkopion",
+      "io.jsonImportTitle": "Importi JSON",
+      "io.jsonImportDesc": "Restarigu el indiĝena JSON savkopio. Importitaj registroj estas kunfanditaj en vian solan genealogian arbon.",
+      "io.jsonChoose": "Elekti .json dosieron",
+      "io.dangerTitle": "Danĝera zono",
+      "io.dangerDesc": "Por ĉiam forigi ĉion konservitan en ĉi tiu retumilo.",
+      "io.dangerBtn": "Forviŝi ĉiujn datumojn"
+    }
+  });
+})(window.FT);

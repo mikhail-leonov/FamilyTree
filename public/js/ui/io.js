@@ -7,6 +7,15 @@ FT.UI = FT.UI || {};
   const H = FT.H, DB = FT.DB, M = FT.Models;
   const t = (k, v) => FT.t(k, v);
 
+  /* Small inline-SVG icons (trusted static markup) for each card header. */
+  const ICONS = {
+    gedImport: "<svg viewBox='0 0 24 24' width='20' height='20' fill='none' stroke='currentColor' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3v12'/><path d='m8 11 4 4 4-4'/><path d='M5 21h14'/></svg>",
+    gedExport: "<svg viewBox='0 0 24 24' width='20' height='20' fill='none' stroke='currentColor' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><path d='M12 15V3'/><path d='m8 7 4-4 4 4'/><path d='M5 21h14'/></svg>",
+    jsonImport: "<svg viewBox='0 0 24 24' width='20' height='20' fill='none' stroke='currentColor' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><path d='M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><path d='M14 3v5h6'/><path d='m9 15 2 2 3-3'/></svg>",
+    jsonExport: "<svg viewBox='0 0 24 24' width='20' height='20' fill='none' stroke='currentColor' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><path d='M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z'/><path d='M14 3v5h6'/><path d='M12 18v-6'/><path d='m9 15 3 3 3-3'/></svg>",
+    danger: "<svg viewBox='0 0 24 24' width='20' height='20' fill='none' stroke='currentColor' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'><path d='M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z'/><path d='M12 9v4'/><path d='M12 17h.01'/></svg>"
+  };
+
   async function render(main) {
     main.appendChild(H.el("div", { class: "ft-page-head" }, [
       H.el("div", {}, [
@@ -15,29 +24,63 @@ FT.UI = FT.UI || {};
       ])
     ]));
 
-    main.appendChild(H.el("div", { class: "ft-grid-2" }, [
+    main.appendChild(section(t("io.secImport") , t("io.secImportDesc"), [
       gedcomImportCard(),
-      gedcomExportCard(),
-      jsonImportCard(),
-      jsonExportCard(),
-      dangerCard()
+      jsonImportCard()
     ]));
+
+    main.appendChild(section(t("io.secExport"), t("io.secExportDesc"), [
+      gedcomExportCard(),
+      jsonExportCard()
+    ]));
+
+    main.appendChild(dangerCard());
   }
 
-  function card(title, desc, body) {
-    return H.el("div", { class: "ft-card" }, [
-      H.el("h2", { class: "ft-h2" }, title),
-      desc ? H.el("p", { class: "ft-muted" }, desc) : null,
-      body
+  /* A titled group of cards, mirroring the visual rhythm of the other pages. */
+  function section(title, desc, cards) {
+    return H.el("section", { class: "ft-io-section" }, [
+      H.el("div", { class: "ft-io-section-head" }, [
+        H.el("h2", { class: "ft-h2" }, title),
+        desc ? H.el("p", { class: "ft-muted" }, desc) : null
+      ]),
+      H.el("div", { class: "ft-grid-2" }, cards)
     ]);
+  }
+
+  function card(title, desc, body, opts) {
+    opts = opts || {};
+    const head = H.el("div", { class: "ft-io-card-head" }, [
+      opts.icon ? H.el("span", { class: "ft-io-icon" + (opts.accent ? " " + opts.accent : ""), html: opts.icon }) : null,
+      H.el("div", {}, [
+        H.el("h3", { class: "ft-io-card-title" }, title),
+        desc ? H.el("p", { class: "ft-muted ft-io-card-desc" }, desc) : null
+      ])
+    ]);
+    return H.el("div", { class: "ft-card ft-io-card" + (opts.accent ? " " + opts.accent : "") }, [
+      head,
+      H.el("div", { class: "ft-io-card-body" }, [body])
+    ]);
+  }
+
+  /* A file picker that matches the page's other buttons: the trigger is a
+   * styled <label> (ghost button) and the native <input type=file> is visually
+   * hidden but still activated by clicking the label. */
+  function filePicker(labelText, attrs, onFile) {
+    const input = H.el("input", Object.assign(
+      { type: "file", class: "ft-file ft-visually-hidden" }, attrs || {}));
+    input.addEventListener("change", () => {
+      const f = input.files && input.files[0];
+      if (f) onFile(f);
+    });
+    return H.el("label", { class: "ft-btn ghost ft-upload-btn" }, [labelText, input]);
   }
 
   /* ---- GEDCOM import ---- */
   function gedcomImportCard() {
     const status = H.el("div", { class: "ft-io-status" });
-    const file = H.el("input", { type: "file", accept: ".ged,.gedcom,text/plain", class: "ft-file" });
-    file.addEventListener("change", async () => {
-      const f = file.files[0]; if (!f) return;
+    const picker = filePicker(t("io.gedChoose"),
+      { accept: ".ged,.gedcom,text/plain" }, async (f) => {
       status.textContent = "Parsing\u2026";
       try {
         const text = await f.text();
@@ -55,7 +98,7 @@ FT.UI = FT.UI || {};
       } catch (e) { status.textContent = "Import failed: " + e.message; H.toast(e.message, "error"); }
     });
     return card(t("io.gedImportTitle"), t("io.gedImportDesc"),
-      H.el("div", {}, [H.el("label", { class: "ft-upload" }, [t("io.gedChoose"), file]), status]));
+      H.el("div", {}, [picker, status]), { icon: ICONS.gedImport });
   }
 
   /* ---- GEDCOM export ---- */
@@ -66,7 +109,7 @@ FT.UI = FT.UI || {};
       H.download(safe(tree && tree.name) + ".ged", text, "text/plain");
       H.toast("GEDCOM exported.", "success");
     } }, t("io.gedExportBtn"));
-    return card(t("io.gedExportTitle"), t("io.gedExportDesc"), btn);
+    return card(t("io.gedExportTitle"), t("io.gedExportDesc"), btn, { icon: ICONS.gedExport });
   }
 
   /* ---- JSON export ---- */
@@ -77,15 +120,14 @@ FT.UI = FT.UI || {};
       H.download(safe(tree && tree.name) + ".json", text, "application/json");
       H.toast("JSON exported.", "success");
     } }, t("io.jsonExportBtn"));
-    return card(t("io.jsonExportTitle"), t("io.jsonExportDesc"), btn);
+    return card(t("io.jsonExportTitle"), t("io.jsonExportDesc"), btn, { icon: ICONS.jsonExport });
   }
 
   /* ---- JSON import ---- */
   function jsonImportCard() {
     const status = H.el("div", { class: "ft-io-status" });
-    const file = H.el("input", { type: "file", accept: ".json,application/json", class: "ft-file" });
-    file.addEventListener("change", async () => {
-      const f = file.files[0]; if (!f) return;
+    const picker = filePicker(t("io.jsonChoose"),
+      { accept: ".json,application/json" }, async (f) => {
       status.textContent = "Importing\u2026";
       try {
         const text = await f.text();
@@ -99,14 +141,14 @@ FT.UI = FT.UI || {};
         renderConflicts(status, result.conflicts, "json");
         H.toast("JSON imported." + (result.conflicts && result.conflicts.length ? " " + result.conflicts.length + " conflict(s) logged." : ""),
           result.conflicts && result.conflicts.length ? "info" : "success");
-      } catch (e) { 
+      } catch (e) {
         console.error("Import error:", e);
-        status.textContent = "Import failed: " + e.message; 
-        H.toast(e.message, "error"); 
+        status.textContent = "Import failed: " + e.message;
+        H.toast(e.message, "error");
       }
     });
     return card(t("io.jsonImportTitle"), t("io.jsonImportDesc"),
-      H.el("div", {}, [H.el("label", { class: "ft-upload" }, [t("io.jsonChoose"), file]), status]));
+      H.el("div", {}, [picker, status]), { icon: ICONS.jsonImport });
   }
 
 
@@ -119,7 +161,7 @@ FT.UI = FT.UI || {};
       H.toast("All data cleared. Reloading\u2026", "success");
       setTimeout(() => location.reload(), 800);
     } }, t("io.dangerBtn"));
-    return card(t("io.dangerTitle"), t("io.dangerDesc"), btn);
+    return card(t("io.dangerTitle"), t("io.dangerDesc"), btn, { icon: ICONS.danger, accent: "danger" });
   }
 
   /* ---- conflict log rendering (shared by GEDCOM + JSON import) ---- */
@@ -166,4 +208,4 @@ FT.UI = FT.UI || {};
   function safe(s) { return (s || "family-tree").replace(/[^a-z0-9_-]+/gi, "_"); }
 
   FT.UI.IO = { render };
-})(window.FT);
+})(window.FT); 

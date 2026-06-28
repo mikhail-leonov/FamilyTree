@@ -1,4 +1,4 @@
-# Build Prompt — "Heirloom" Local-First Family Tree Web App
+# "Heirloom" Local-First Family Tree Web App
 
 You are to build a **complete, single-page, fully client-side family-tree web application** called **Heirloom**. 
 Everything runs in the browser with **no backend, no build step, and no network calls at runtime** — 

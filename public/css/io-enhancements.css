@@ -1,0 +1,79 @@
+/* ============================================================================
+   io-enhancements.css — polish for the Import / Export page so it reads like
+   the Dashboard and People pages: grouped sections, icon-headed cards, a clear
+   primary/secondary action rhythm, dropzone-style file pickers, and an
+   accented danger card. Loaded after styles.css (see index.html).
+   ========================================================================== */
+
+/* ── Grouped sections ─────────────────────────────────────────────────────── */
+.ft-io-section { margin-bottom: 26px; }
+.ft-io-section-head { margin: 0 0 12px; }
+.ft-io-section-head .ft-h2 { margin: 0 0 2px; }
+.ft-io-section-head .ft-muted { margin: 0; font-size: 13.5px; }
+
+/* ── Cards ────────────────────────────────────────────────────────────────── */
+.ft-io-card {
+  display: flex; flex-direction: column; gap: 14px; margin-bottom: 0;
+  transition: box-shadow .18s ease, transform .18s ease, border-color .18s ease;
+}
+.ft-io-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 2px 4px rgba(43,33,24,.10), 0 12px 26px rgba(43,33,24,.12);
+  transform: translateY(-1px);
+}
+.ft-io-card-head { display: flex; align-items: flex-start; gap: 12px; }
+.ft-io-card-title {
+  font-family: var(--serif); font-weight: 600; font-size: 18px;
+  color: var(--ink); margin: 0 0 3px; line-height: 1.2;
+}
+.ft-io-card-desc { margin: 0; font-size: 13px; line-height: 1.45; }
+.ft-io-card-body { margin-top: auto; display: flex; flex-direction: column; gap: 8px; }
+
+/* Icon chip in each card header. */
+.ft-io-icon {
+  flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center;
+  width: 38px; height: 38px; border-radius: 11px;
+  background: rgba(181,137,63,.12); color: var(--gold-dk);
+  border: 1px solid rgba(181,137,63,.28);
+}
+.ft-io-icon svg { display: block; }
+
+/* ── Danger card accent ───────────────────────────────────────────────────── */
+.ft-io-card.danger {
+  border-color: rgba(154,59,46,.35);
+  background:
+    linear-gradient(0deg, rgba(154,59,46,.05), rgba(154,59,46,.05)),
+    var(--card);
+}
+.ft-io-card.danger:hover { border-color: var(--bad); box-shadow: 0 2px 4px rgba(154,59,46,.12), 0 12px 26px rgba(154,59,46,.14); }
+.ft-io-icon.danger { background: rgba(154,59,46,.12); color: var(--bad); border-color: rgba(154,59,46,.3); }
+
+/* ── Dropzone-style file picker ───────────────────────────────────────────── */
+.ft-io-card .ft-upload-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 14px 16px; text-align: center;
+  border: 1.5px dashed var(--line); border-radius: 11px;
+  background: #fffdf6; color: var(--claret); font-weight: 600;
+  cursor: pointer; transition: .15s;
+}
+.ft-io-card .ft-upload-btn:hover {
+  border-color: var(--gold); background: rgba(181,137,63,.08); color: var(--claret-dk);
+}
+.ft-io-card .ft-upload-btn::before {
+  content: ""; width: 16px; height: 16px; flex: 0 0 auto;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><path d='M17 8l-5-5-5 5'/><path d='M12 3v12'/></svg>") center/contain no-repeat;
+          mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/><path d='M17 8l-5-5-5 5'/><path d='M12 3v12'/></svg>") center/contain no-repeat;
+}
+
+/* Export / danger actions fill the card width for a consistent button rhythm. */
+.ft-io-card .ft-io-card-body > .ft-btn { width: 100%; }
+
+/* Keep the status / conflict log comfortably spaced inside the new card body. */
+.ft-io-card .ft-io-status { margin-top: 4px; }
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 760px) {
+  .ft-io-card-title { font-size: 17px; }
+  .ft-io-icon { width: 34px; height: 34px; }
+}

@@ -199,11 +199,30 @@ FT.UI = FT.UI || {};
       // child count drives the hidden-children navigation tab.
       const parentCounts = {};
       const childCounts = {};
+      const parentEdgesById = {};        // id -> parent edges (reused for the sibling check)
+      const childCountByParent = {};     // parentId -> total children on record (cached)
       for (const id of ids) {
         const pEdges = await Data.Relationships.parentsOf(id);
         parentCounts[id] = pEdges.length;
+        parentEdgesById[id] = pEdges;
         const cEdges = await Data.Relationships.childrenOf(id);
         childCounts[id] = cEdges.length;
+      }
+      // siblingMap: a person has siblings when at least one of their parents has
+      // more than one child on record. childrenOf(parent) results are cached so a
+      // shared parent is only queried once across the whole bounded graph.
+      const siblingMap = {};
+      for (const id of ids) {
+        let hasSib = false;
+        for (const e of (parentEdgesById[id] || [])) {
+          const pid = e.parent_id;
+          if (childCountByParent[pid] == null) {
+            const kids = await Data.Relationships.childrenOf(pid);
+            childCountByParent[pid] = kids.length;
+          }
+          if (childCountByParent[pid] >= 2) { hasSib = true; break; }
+        }
+        siblingMap[id] = hasSib;
       }
       const ancestorMap = {};
       const descendantMap = {};
@@ -211,7 +230,7 @@ FT.UI = FT.UI || {};
         ancestorMap[id] = parentCounts[id] > 0;
         descendantMap[id] = childCounts[id] > 0;
       });
-      renderer.render(graph, ui.view, { ancestorMap, descendantMap, parentCounts, childCounts });
+      renderer.render(graph, ui.view, { ancestorMap, descendantMap, parentCounts, childCounts, siblingMap });
       // Recenter on focus / depth changes; preserve the current view for
       // in-place edits (save, parent-reveal) so the user keeps their place.
       if (ui.firstPaint) ui.firstPaint = false;      // renderer fits on first paint

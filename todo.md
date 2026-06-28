@@ -1,0 +1,1 @@
+- Add a icon (Like parents and children) that person has siblings - it should be locate on a free side of the card.

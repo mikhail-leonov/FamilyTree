@@ -77,6 +77,7 @@ window.FT = window.FT || {};
       descendantMap: {},                  // id -> has-children? (drives hidden-children tab)
       parentCounts: {},                   // id -> number of parents on record (limits "add parent")
       childCounts: {},                    // id -> number of children on record
+      siblingMap: {},                     // id -> has at least one sibling on record
       // Req 4: selecting a node loads it into the side panel; Req 7: the
       // ancestor indicator (and Enter) re-centres the tree on a person.
       onSelect: opts.onSelect || function () {},
@@ -307,12 +308,22 @@ window.FT = window.FT || {};
         // data-layer count; fall back to whatever parents are visible in-graph.
         const pcRaw = state.parentCounts ? state.parentCounts[id] : undefined;
         const parentCount = (pcRaw != null) ? pcRaw : (adj.ancParents[id] || []).length;
+        // hasSiblings: prefer the data-layer map (knows about siblings that were
+        // never loaded into the bounded graph); fall back to in-graph detection
+        // (any parent of this id has more than one child drawn).
+        let hasSiblings = state.siblingMap ? !!state.siblingMap[id] : false;
+        if (!hasSiblings) {
+          const myParents = adj.ancParents[id] || [];
+          hasSiblings = myParents.some((pid) =>
+            (adj.descChildren[pid] || []).some((cid) => cid !== id));
+        }
         nodes.push(Object.assign({
           id, person, x, y, kind,
           h: nodeHeight(person),
           hasAnc,
           hasDesc,
           parentCount,
+          hasSiblings,
           canAddParent: parentCount < 2,
           isRoot: id === rootId,
           collapsible: (hasAnc || hasDesc) && id !== rootId,
@@ -471,6 +482,7 @@ window.FT = window.FT || {};
       if (extra && extra.descendantMap) state.descendantMap = extra.descendantMap;
       if (extra && extra.parentCounts) state.parentCounts = extra.parentCounts;
       if (extra && extra.childCounts) state.childCounts = extra.childCounts;
+      if (extra && extra.siblingMap) state.siblingMap = extra.siblingMap;
       if (viewCfg) state.viewCfg = Object.assign(state.viewCfg, viewCfg);
       build(graph);
       const changedRoot = state.lastRoot !== graph.root.id;
@@ -586,6 +598,33 @@ window.FT = window.FT || {};
         text = text.slice(0, -1);
       }
       return text + "\u2026";
+    }
+    // ── Sibling indicator ────────────────────────────────────────────────────
+    // A small informational sign shown when the person has at least one sibling
+    // on record. It sits on the LEFT edge in the upper area — a side kept free of
+    // connectors and quick-add controls (parent slots are top-centre, the child
+    // bus is bottom-centre, and the spouse link / "+" sit at the side mid-points).
+    function siblingBadgeCenter(n) {
+      const r = nodeRect(n);
+      return { x: r.x, y: r.y + 20 };
+    }
+    // Draw the "two people" sibling glyph inside a small parchment badge.
+    function drawSiblingBadge(ctx, c) {
+      const R = 8.5;
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, R, 0, Math.PI * 2);
+      ctx.fillStyle = C.badgeFill; ctx.fill();
+      ctx.lineWidth = 1.3; ctx.strokeStyle = C.selRing; ctx.stroke();   // gilt ring
+      // two little figures (heads + shared shoulders) → reads as "siblings"
+      ctx.fillStyle = C.inkSoft;
+      const hy = c.y - 2.4, hr = 1.7, dx = 2.5;
+      ctx.beginPath(); ctx.arc(c.x - dx, hy, hr, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(c.x + dx, hy, hr, 0, Math.PI * 2); ctx.fill();
+      // shoulders: two small upper-half arcs just below the heads
+      ctx.lineWidth = 1.5; ctx.strokeStyle = C.inkSoft; ctx.lineCap = "round";
+      ctx.beginPath(); ctx.arc(c.x - dx, c.y + 2.4, 2.0, Math.PI, 0); ctx.stroke();
+      ctx.beginPath(); ctx.arc(c.x + dx, c.y + 2.4, 2.0, Math.PI, 0); ctx.stroke();
+      ctx.lineCap = "butt";
     }
     // Draw a small circular "+" control (used by all three add affordances).
     function drawAddControl(ctx, c) {
@@ -757,6 +796,8 @@ window.FT = window.FT || {};
         addParentSlots(n).forEach((c) => drawAddControl(ctx, c));
         drawAddControl(ctx, addChildCenter(n));
         drawAddControl(ctx, addSpouseCenter(n));
+        // ── Sibling indicator (informational, left edge) ────────────────
+        if (n.hasSiblings) drawSiblingBadge(ctx, siblingBadgeCenter(n));
       }
     }
     /* ----------------------------- hit testing ----------------------------- */

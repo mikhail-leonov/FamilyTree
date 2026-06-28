@@ -11,6 +11,9 @@
  *   - Marriages gain a notes field.
  *   - Media upload stores METADATA + a small generated thumbnail only; the
  *     original file never enters IndexedDB (spec).
+ *   - Gender and Status selects now render IDENTICALLY to the tree-page side
+ *     editor: capitalised gender labels ("Male", "Female", …) and
+ *     "Living" / "Deceased" status labels, so the two editors match.
  * ========================================================================== */
 window.FT = window.FT || {};
 FT.UI = FT.UI || {};
@@ -20,6 +23,7 @@ FT.UI = FT.UI || {};
   const H = FT.H, M = FT.Models, Data = FT.Data;
 
   /* ------------------------------------------------------------- helpers */
+  function cap(s) { return s ? s.charAt(0).toUpperCase() + s.slice(1) : s; }
   function field(label, input, opts) {
     opts = opts || {};
     const id = "f-" + Math.random().toString(36).slice(2, 8);
@@ -123,12 +127,14 @@ FT.UI = FT.UI || {};
     ]));
 
     /* ---- identity form ---- */
+    // Gender + Status render the SAME way as the tree-page side editor:
+    // capitalised gender labels and "Living"/"Deceased" status labels.
     const f = {
       first: input(p.first_name), middle: input(p.middle_name), last: input(p.last_name),
       maiden: input(p.maiden_name), nick: input(p.nickname),
-      gender: select(M.GENDERS.map((g) => ({ value: g, label: g })), p.gender),
+      gender: select(M.GENDERS.map((g) => ({ value: g, label: cap(g) })), p.gender),
       birth: dateInput(p.birth_date), death: dateInput(p.death_date),
-      living: select([{ value: "1", label: "living" }, { value: "0", label: "deceased" }], p.living ? "1" : "0"),
+      living: select([{ value: "1", label: "Living" }, { value: "0", label: "Deceased" }], p.living ? "1" : "0"),
       birthPlace: input(p.birth_place), deathPlace: input(p.death_place), residence: input(p.residence),
       occupation: input(p.occupation), education: input(p.education),
       biography: H.el("textarea", { class: "ft-input", rows: 5 }),
@@ -161,7 +167,7 @@ FT.UI = FT.UI || {};
         field("Cause of death", f.causeOfDeath),
         field("Email", f.email),
         field("Married name", f.marriedName),
-        field("MyHeritage UPD", f.upd, { hint: "read‑only" }),
+        field("MyHeritage UPD", f.upd, { hint: "read\u2011only" }),
         field("MyHeritage UID", f.uid),
         field("MyHeritage RIN", f.rin)
       ])

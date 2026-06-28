@@ -82,6 +82,10 @@
       // import / export
       "io.eyebrow": "Data",
       "io.title": "Import & Export",
+      "io.secImport": "Import",
+      "io.secImportDesc": "Bring records into your family tree from other genealogy software or a backup.",
+      "io.secExport": "Export",
+      "io.secExportDesc": "Take your family tree elsewhere, or keep a safe local backup.",
       "io.gedImportTitle": "Import GEDCOM",
       "io.gedImportDesc": "Supports 5.5, 5.5.1, and 7.0. Unknown tags are skipped. Imported people are merged into your family tree; matching people are de-duplicated.",
       "io.gedChoose": "Choose a .ged file",

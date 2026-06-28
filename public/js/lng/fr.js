@@ -1,0 +1,106 @@
+/* js/lng/fr.js — French language pack. Registers itself with the i18n engine. */
+(function (FT) {
+  "use strict";
+  FT.I18n.register("fr", {
+    name: "French",
+    nativeName: "Français",
+    dir: "ltr",
+    strings: {
+      // shell
+      "brand.title": "Arbre généalogique",
+      "nav.dashboard": "Tableau de bord",
+      "nav.people": "Personnes",
+      "nav.tree": "Arbre",
+      "nav.io": "Importer / Exporter",
+      "search.placeholder": "Rechercher des personnes\u2026",
+      "lang.label": "Langue",
+
+      // common
+      "common.addPerson": "+ Ajouter une personne",
+      "common.viewTree": "Voir l'arbre",
+      "common.tree": "Arbre",
+      "common.story": "Récit",
+      "common.edit": "Modifier",
+      "common.print": "Imprimer",
+      "common.importData": "Importer des données",
+      "common.openViewer": "Ouvrir la visionneuse",
+      "common.manageData": "Gérer les données",
+      "common.prev": "\u2190 Précédent",
+      "common.next": "Suivant \u2192",
+      "common.loading": "Chargement\u2026",
+
+      // dashboard
+      "dash.overview": "Aperçu",
+      "dash.title": "Tableau de bord",
+      "stat.people": "Personnes",
+      "stat.living": "Vivants",
+      "stat.deceased": "{n} décédés",
+      "stat.marriages": "Mariages",
+      "stat.events": "Événements",
+      "stat.surnames": "Noms de famille",
+      "stat.earliestBirth": "Naissance la plus ancienne",
+      "dash.recentlyEdited": "Modifié récemment",
+      "dash.noPeople": "Aucune personne pour l'instant. Ajoutez-en une pour commencer.",
+      "empty.title": "Votre arbre est vide",
+      "empty.body": "Rendez-vous sur la page Arbre pour nommer votre arbre généalogique et ajouter sa première personne \u2014 ou importez un fichier GEDCOM / JSON.",
+      "empty.start": "Commencer votre arbre",
+      "quick.exploreTitle": "Explorer l'arbre",
+      "quick.exploreBody": "Parcourez les ancêtres et les descendants dans la visionneuse interactive.",
+      "quick.ioTitle": "Importer / Exporter",
+      "quick.ioBody": "Chargez un fichier GEDCOM ou sauvegardez vos données au format JSON.",
+
+      // people
+      "people.records": "Fiches",
+      "people.title": "Personnes",
+      "people.searchPlaceholder": "Nom, profession, lieu de naissance\u2026",
+      "people.includeNotes": "inclure notes et biographie",
+      "sort.lastName": "Nom",
+      "sort.firstName": "Prénom",
+      "sort.birthDate": "Date de naissance",
+      "table.name": "Nom",
+      "table.lifespan": "Durée de vie",
+      "table.birthplace": "Lieu de naissance",
+      "table.occupation": "Profession",
+      "people.noMatches": "Aucun résultat",
+      "people.noPeople": "Aucune personne pour l'instant",
+      "people.noMatchesBody": "Essayez un préfixe plus court ou incluez notes et biographie.",
+      "people.noPeopleBody": "Ajoutez une personne ou importez un fichier GEDCOM pour commencer.",
+      "people.living": "vivant",
+      "people.pageInfo": "Page {page} sur {pages} \u00b7 {total} {unit}",
+      "people.unitMatches": "résultats",
+      "people.unitPeople": "personnes",
+
+      // story
+      "story.eyebrow": "Histoire de vie",
+      "tab.narrative": "Récit",
+      "tab.timeline": "Chronologie",
+      "story.noEvents": "Aucun événement daté.",
+      "story.notEnough": "Pas encore assez d'informations pour composer un récit.",
+      "rel.parents": "Parents",
+      "rel.children": "Enfants",
+
+      // import / export
+      "io.eyebrow": "Données",
+      "io.title": "Importer et exporter",
+      "io.secImport": "Importer",
+      "io.secImportDesc": "Ajoutez des fiches à votre arbre généalogique depuis un autre logiciel ou une sauvegarde.",
+      "io.secExport": "Exporter",
+      "io.secExportDesc": "Emportez votre arbre généalogique ailleurs, ou conservez une sauvegarde locale sûre.",
+      "io.gedImportTitle": "Importer GEDCOM",
+      "io.gedImportDesc": "Prend en charge les versions 5.5, 5.5.1 et 7.0. Les balises inconnues sont ignorées. Les personnes importées sont fusionnées dans votre arbre généalogique ; les doublons sont dédupliqués.",
+      "io.gedChoose": "Choisir un fichier .ged",
+      "io.gedExportTitle": "Exporter GEDCOM",
+      "io.gedExportDesc": "Exportez votre arbre généalogique au format GEDCOM 5.5.1 pour l'utiliser dans d'autres logiciels de généalogie.",
+      "io.gedExportBtn": "Télécharger le GEDCOM",
+      "io.jsonExportTitle": "Exporter JSON",
+      "io.jsonExportDesc": "Sauvegarde native sans perte incluant personnes, relations, mariages, événements et médias.",
+      "io.jsonExportBtn": "Télécharger la sauvegarde JSON",
+      "io.jsonImportTitle": "Importer JSON",
+      "io.jsonImportDesc": "Restaurez à partir d'une sauvegarde native JSON. Les fiches importées sont fusionnées dans votre arbre généalogique unique.",
+      "io.jsonChoose": "Choisir un fichier .json",
+      "io.dangerTitle": "Zone de danger",
+      "io.dangerDesc": "Supprimer définitivement tout ce qui est stocké dans ce navigateur.",
+      "io.dangerBtn": "Effacer toutes les données"
+    }
+  });
+})(window.FT);
